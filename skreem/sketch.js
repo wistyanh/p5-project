@@ -17,11 +17,11 @@ let yVel;
 let xAcc;
 let yAcc;
 
-let micStarted = false;
-
  function setup(){
    mic = new p5.AudioIn();
-   createCanvas(1000, 750);
+   let cnv = createCanvas(1000, 750);
+   cnv.mouseClicked(userStartAudio);
+
    background("#cce6ff");
    textFont('Helvetica', 50)
    text('✨skreem✨', 365, 200);
@@ -38,6 +38,8 @@ let micStarted = false;
    button2.hide();
    button2.mousePressed(startGame);
    
+   mic.start();
+   mic.amp(1.0);
    
 }
 
@@ -122,11 +124,5 @@ function startGame() {
   xAcc = 0;
   yAcc = 0.1;
   
-  if (!micStarted) {
-    mic.start();
-    mic.amp(1.0);
-    micStarted = true;
-  }
-
   gameStatus = true;
 }
