@@ -19,8 +19,7 @@ let yAcc;
 
  function setup(){
    mic = new p5.AudioIn();
-   let cnv = createCanvas(1000, 750);
-   cnv.mouseClicked(userStartAudio);
+   createCanvas(1000, 750);
 
    background("#cce6ff");
    textFont('Helvetica', 50)
@@ -116,6 +115,8 @@ function startGame() {
   enemyHeight = 200;
   enemyWidth = 1000;
   restart = false;
+
+  userStartAudio();
 
   pX = width/4;
   pY = 690;
