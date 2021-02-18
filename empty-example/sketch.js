@@ -1,7 +1,5 @@
-/* Improvements:
-1. Add a timer/enemy counter + a max score to the game over screen
-2. Add the top enemy if possible
-*/
+//add timer/scoreboard + extra enemies + top score
+
 let mic;
 let button1;
 let button2;
@@ -16,6 +14,7 @@ let xVel;
 let yVel;
 let xAcc;
 let yAcc;
+
 
  function setup(){
    mic = new p5.AudioIn();
