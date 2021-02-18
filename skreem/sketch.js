@@ -17,6 +17,8 @@ let yVel;
 let xAcc;
 let yAcc;
 
+let micStarted = false;
+
  function setup(){
    mic = new p5.AudioIn();
    createCanvas(1000, 750);
@@ -36,8 +38,6 @@ let yAcc;
    button2.hide();
    button2.mousePressed(startGame);
    
-   mic.start();
-   mic.amp(1.0);
    
 }
 
@@ -122,5 +122,11 @@ function startGame() {
   xAcc = 0;
   yAcc = 0.1;
   
+  if (!micStarted) {
+    mic.start();
+    mic.amp(1.0);
+    micStarted = true;
+  }
+
   gameStatus = true;
 }
