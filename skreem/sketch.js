@@ -100,7 +100,7 @@ function draw(){
   
   
   if (gameStatus == false) {
-    background("#ccccff");
+    background("#cce6ff");
     textFont('Helvetica', 100)
     text('GAME OVER', 190, 250);
     restart =  true;
