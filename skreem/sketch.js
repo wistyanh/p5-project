@@ -17,6 +17,9 @@ let yVel;
 let xAcc;
 let yAcc;
 
+let highScore = 0;
+let score = 0;
+
  function setup(){
    mic = new p5.AudioIn();
    createCanvas(1000, 750);
@@ -33,7 +36,7 @@ let yAcc;
    button1.mousePressed(startGame);
    
    button2 = createButton('click here to restart!');
-   button2.position(440, 375);
+   button2.position(430, 400);
    button2.hide();
    button2.mousePressed(startGame);
    
@@ -51,6 +54,10 @@ function draw(){
   if (gameStatus) {
     background("#ccccff");
     rect(0, 700, 1000, 50);
+
+    textSize(30);
+    text('score: ', 820, 50);
+    text(score, 920, 50);
 
     micLevel = mic.getLevel() * 100;
     console.log("micLevel is " + micLevel);
@@ -80,6 +87,7 @@ function draw(){
     if (enemyWidth <= -50) {
       enemyWidth = 1000;
       enemyHeight = random(150, 500);
+      score += 1;
     }
 
     if (pX+20 >= enemyWidth && pX+20 <= enemyWidth+50 && pY >= enemyYStart) {
@@ -94,8 +102,15 @@ function draw(){
   if (gameStatus == false) {
     background("#ccccff");
     textFont('Helvetica', 100)
-    text('GAME OVER', 200, 200);
+    text('GAME OVER', 190, 250);
     restart =  true;
+
+    if (score > highScore) {
+      highScore = score;
+    }
+
+    textFont('Roboto', 30);
+    text('High Score: ' + highScore, 410, 355);    
     
     button2.show();
     
@@ -115,6 +130,7 @@ function startGame() {
   enemyHeight = 200;
   enemyWidth = 1000;
   restart = false;
+  score = 0;
 
   userStartAudio();
 
